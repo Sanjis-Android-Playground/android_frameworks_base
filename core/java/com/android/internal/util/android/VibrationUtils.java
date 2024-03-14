@@ -13,6 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> a0ffee537368 (core: Introduce VibrationUtils)
 package com.android.internal.util.android;
 
 import android.content.Context;
@@ -25,6 +29,7 @@ import java.util.concurrent.Executors;
 
 public class VibrationUtils {
 
+<<<<<<< HEAD
     private static final Executor executor = Executors.newSingleThreadExecutor();
     private static final VibrationEffect[] effects = {
             null,
@@ -47,4 +52,42 @@ public class VibrationUtils {
             vibrator.vibrate(effects[intensity]);
         });
     }
+=======
+    private static Executor executor = Executors.newSingleThreadExecutor();
+
+    public static void triggerVibration(final Context context, final int intensity) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+                if (vibrator == null || intensity == 0) {
+                    return;
+                }
+                VibrationEffect effect = createVibrationEffect(intensity);
+                if (effect == null) {
+                    return;
+                }
+                vibrator.cancel();
+                vibrator.vibrate(effect);
+            }
+        });
+    }
+
+    private static VibrationEffect createVibrationEffect(int intensity) {
+        switch (intensity) {
+            case 1:
+                return VibrationEffect.createPredefined(VibrationEffect.EFFECT_TEXTURE_TICK);
+            case 2:
+                return VibrationEffect.createPredefined(VibrationEffect.EFFECT_TICK);
+            case 3:
+                return VibrationEffect.createPredefined(VibrationEffect.EFFECT_CLICK);
+            case 4:
+                return VibrationEffect.createPredefined(VibrationEffect.EFFECT_DOUBLE_CLICK);
+            case 5:
+                return VibrationEffect.createPredefined(VibrationEffect.EFFECT_HEAVY_CLICK);
+            default:
+                return null;
+        }
+    }
+>>>>>>> a0ffee537368 (core: Introduce VibrationUtils)
 }
