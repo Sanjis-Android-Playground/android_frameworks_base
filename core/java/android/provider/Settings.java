@@ -6534,6 +6534,11 @@ public final class Settings {
         public static final String SCREEN_OFF_ANIMATION = "screen_off_animation";
 
         /**
+         * @hide
+         */
+        public static final String ONGOING_ACTION_CHIP = "ongoing_action_chip";
+
+        /**
          * Whether edge light is enabled.
          * Default 0
          * @hide
