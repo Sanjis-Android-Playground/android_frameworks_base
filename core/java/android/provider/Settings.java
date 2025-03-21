@@ -6578,6 +6578,17 @@ public final class Settings {
         public static final String EDGE_LIGHT_CUSTOM_COLOR = "edge_light_custom_color";
 
         /**
+         * @hide
+         */
+        public static final String ONGOING_ACTION_CHIP = "ongoing_action_chip";
+
+        /**
+         * @hide
+         */
+        public static final String SHOW_MEDIA_PROGRESS = "show_media_progress";
+
+
+        /**
          * GameSpace: List of added games by user
          * @hide
          */
